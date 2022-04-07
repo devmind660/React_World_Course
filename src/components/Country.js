@@ -48,7 +48,7 @@ const Country = ({country}) => {
                 </li>
                 <li>
                     <h3>Code{languagesCode.length > 1 && "s"} langue :</h3>
-                    <p>{languagesCode.map((language, i) => <span key={i}>{language.toUpperCase()} </span>)}</p>
+                    <p>{languagesCode.map((language, i) => <span key={i}>{language.toUpperCase()} </span>)} {languagesCode.length > 1 && <span>({languagesCode.length})</span>} </p>
                 </li>
                 <li>
                     <h3>Code{currenciesCode.length > 1 && "s"} devise :</h3>
