@@ -54,7 +54,7 @@ const Countries = () => {
             <ul>
                 {filteredCountries.map((country, index) =>
                     <Card key={index} country={country}
-                          onClick={() => {setSelectedCountry(country);}} />
+                          handler={() => setSelectedCountry(country)} />
                 )}
             </ul>
         </div>
