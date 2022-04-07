@@ -26,37 +26,43 @@ const Countries = () => {
 
     return (
         <div className="countries">
-            <ul className="radio-container">
-                <input type="range" min="1" max="250"
-                       defaultValue={rangeValue}
-                       onChange={(e) => setRangeValue(e.target.value)} />
-                {radios.map((continent, index) => (
-                    <li key={index}>
-                        <input type="radio" id={continent} name="continentRadio"
-                               checked={continent === selectedRadio}
-                               onChange={(e) => setSelectedRadio(e.target.id)} />
-                        <label htmlFor={continent}>{continent}</label>
-                    </li>
-                ))}
-                <input type="search" id="search" name="searchInput" value={searchValue}
-                       max="100" placeholder="Recherche…"
-                       onChange={(e) => setSearchValue(e.target.value)} />
-            </ul>
+            {!selectedCountry && <div>
+                <ul className="radio-container">
+                    <input type="range" min="1" max="250"
+                           defaultValue={rangeValue}
+                           onChange={(e) => setRangeValue(e.target.value)} />
+                    {radios.map((continent, index) => (
+                        <li key={index}>
+                            <input type="radio" id={continent} name="continentRadio"
+                                   checked={continent === selectedRadio}
+                                   onChange={(e) => setSelectedRadio(e.target.id)} />
+                            <label htmlFor={continent}>{continent}</label>
+                        </li>
+                    ))}
+                    <input type="search" id="search" name="searchInput" value={searchValue}
+                           max="100" placeholder="Recherche…"
+                           onChange={(e) => setSearchValue(e.target.value)} />
+                </ul>
+                <p>{filteredCountries.length} résultat{filteredCountries.length > 1 && "s"}</p>
+                {(selectedRadio || searchValue) && <button onClick={() => {
+                    setSelectedRadio("");
+                    setSearchValue("");
+                }}>Annuler la recherche</button>}
+            </div>}
 
-            <p>{filteredCountries.length} résultat{filteredCountries.length > 1 && "s"}</p>
-            {(selectedRadio || searchValue) && <button onClick={() => {
-                setSelectedRadio("");
-                setSearchValue("");
-            }}>Annuler la recherche</button>}
+            {selectedCountry && <div className="country">
+                <Country country={selectedCountry} />
+                <button onClick={() => {
+                    setSelectedCountry("");
+                }}>Retour à la liste</button>
+            </div>}
 
-            {selectedCountry && <Country country={selectedCountry} />}
-
-            <ul>
+            {!selectedCountry && <ul>
                 {filteredCountries.map((country, index) =>
                     <Card key={index} country={country}
                           handler={() => setSelectedCountry(country)} />
                 )}
-            </ul>
+            </ul>}
         </div>
     );
 };
