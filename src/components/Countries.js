@@ -1,24 +1,28 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Card from "./Card";
+import Country from "./Country";
 
 const Countries = () => {
     // useState & useEffect = hooks
-    const [data, setData] = useState([]);
+    const [countriesData, setCountriesData] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState();
     const [searchValue, setSearchValue] = useState("");
     const [rangeValue, setRangeValue] = useState(250);
     const [selectedRadio, setSelectedRadio] = useState("");
     const radios = ["Africa", "America", "Asia", "Europe", "Oceania"];
-    const filteredData = data
+    const filteredCountries = countriesData
         .filter((country) => country.continents[0].includes(selectedRadio))
         .filter((country) => country.translations.fra.common.toLowerCase().includes((searchValue.toLowerCase())))
         .sort((a, b) => b.population - a.population) // Tri décroissant par nb d'habitants
         .slice(0, rangeValue);
-    // useEffect = Mounted()
-    useEffect(() => {
+
+    useEffect(() => { // useEffect = Mounted()
         axios.get("https://restcountries.com/v3.1/all")
-            .then((res) => setData(res.data));
+            .then((res) => setCountriesData(res.data));
     }, [])
+
+    console.log(selectedCountry);
 
     return (
         <div className="countries">
@@ -38,16 +42,23 @@ const Countries = () => {
                        max="100" placeholder="Recherche…"
                        onChange={(e) => setSearchValue(e.target.value)} />
             </ul>
-            <p>{filteredData.length} résultat{filteredData.length > 1 && "s"}</p>
+
+            <p>{filteredCountries.length} résultat{filteredCountries.length > 1 && "s"}</p>
             {(selectedRadio || searchValue) && <button onClick={() => {
                 setSelectedRadio("");
                 setSearchValue("");
             }}>Annuler la recherche</button>}
+
+            {selectedCountry && <Country country={selectedCountry} />}
+git status
             <ul>
-                {filteredData.map((country, index) => <Card key={index} country={country} />)}
+                {filteredCountries.map((country, index) =>
+                    <Card key={index} country={country}
+                          onClick={() => {setSelectedCountry(country);}} />
+                )}
             </ul>
         </div>
     );
-}
+};
 
 export default Countries;

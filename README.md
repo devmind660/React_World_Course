@@ -1,3 +1,18 @@
+Reprendre le projet React :
+### `npm i`
+
+Installer JSON-SERVER (si non installé) :
+### `npm i -g json-server`
+
+Faire tourner le back (sans script) :
+### `json-server --w src/assets/db.json --port 3004`
+
+Ajouter le script (package.json/scripts) :
+### `"server": "json-server --w src/assets/db.json --port 3004"`
+
+Faire tourner le back (avec script) :
+### `npm run server`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -27,10 +27,12 @@ body {
   font-family: $font-1;
   // @include verticalCenter;
 }
+
 li {
   list-style-type: none;
 }
 
 p {
   margin: 0 5vw;
+  line-height: 1.2rem;
 }

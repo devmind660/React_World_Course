@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ country }) => { // { Country } = props.country
+const Card = ({country}) => { // { Country } = props.country
     return (
         <li className="card">
             <img src={country.flags.svg} alt={"drapeau " + country.translations.fra.common} />
