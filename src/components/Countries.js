@@ -50,7 +50,7 @@ const Countries = () => {
             }}>Annuler la recherche</button>}
 
             {selectedCountry && <Country country={selectedCountry} />}
-git status
+
             <ul>
                 {filteredCountries.map((country, index) =>
                     <Card key={index} country={country}
