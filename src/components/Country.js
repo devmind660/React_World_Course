@@ -55,8 +55,8 @@ const Country = ({country}) => {
                     <p>{currenciesCode.map((currency, i) => <span key={i}>{currency} </span>)}</p>
                 </li>
                 <li>
-                    <h3>Pays frontalier{country.borders.length > 1 && "s"} :</h3>
-                    <p>{country.borders.map((border, i) => <span key={i}>{border} </span>)} {country.borders.length > 1 && <span>({country.borders.length})</span>}</p>
+                    <h3>Pays frontalier{(country.borders && country.borders.length > 1) && "s"} :</h3>
+                    {country.borders ? <p>{country.borders.map((border, i) => <span key={i}>{border} </span>)} {country.borders.length > 1 && <span>({country.borders.length})</span>}</p> : <p>Aucun</p>}
                 </li>
             </ul>
         </div>
