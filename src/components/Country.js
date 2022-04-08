@@ -48,7 +48,7 @@ const Country = ({country}) => {
                     <p>{country.region}</p>
                 </li>
                 <li>
-                    <h3>Sous-région :</h3>
+                    <h3>Région :</h3>
                     {country.subregion ?
                         <p>{country.subregion}</p> : <p>–</p>}
                 </li>
