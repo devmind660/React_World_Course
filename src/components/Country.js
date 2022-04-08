@@ -14,7 +14,7 @@ const Country = ({country}) => {
 
     return (
         <div className="country-container">
-            <h1>{country.flag} {country.translations.fra.official}</h1>
+            <h1>{country.flag} {country.translations.fra.official} {country.flag}</h1>
             <ul>
                 <li>
                     <h3>Capitale :</h3>
@@ -27,17 +27,19 @@ const Country = ({country}) => {
                 </li>
                 <li>
                     <h3>Indépendance :</h3>
-                    <p>{country.independent ?"Oui" : "Non"}</p>
+                    <p>{country.independent ? "Oui" : "Non"}</p>
                 </li>
                 <li>
                     <h3>Langue{(languages && languages.length) > 1 && "s"} :</h3>
                     {languages ?
-                        <p>{languages.map((language, i) => <span key={i}>{language} </span>)}</p> : <p>–</p>}
+                        <p>{languages.map((language, i) => <span key={i}>{language} </span>)}</p>
+                        : <p>–</p>}
                 </li>
                 <li>
                     <h3>Devise{(currencies && currencies.length) > 1 && "s"} :</h3>
                     {currencies ?
-                        <p>{currencies.map((currency, i) => <span key={i}>{currency.name} ({currency.symbol}) </span>)}</p> : <p>–</p>}
+                        <p>{currencies.map((currency, i) => <span key={i}>{currency.name} ({currency.symbol}) </span>)}</p>
+                        : <p>–</p>}
                 </li>
                 <li>
                     <h3>Superficie :</h3>
@@ -50,7 +52,8 @@ const Country = ({country}) => {
                 <li>
                     <h3>Région :</h3>
                     {country.subregion ?
-                        <p>{country.subregion}</p> : <p>–</p>}
+                        <p>{country.subregion}</p>
+                        : <p>–</p>}
                 </li>
                 <li>
                     <h3>Code pays :</h3>
@@ -59,17 +62,20 @@ const Country = ({country}) => {
                 <li>
                     <h3>Code{(languagesCode && languagesCode.length) > 1 && "s"} langue :</h3>
                     {languagesCode ?
-                        <p>{languagesCode.map((language, i) => <span key={i}>{language.toUpperCase()} </span>)} {languagesCode.length > 1 && <span>({languagesCode.length})</span>} </p> : <p>–</p>}
+                        <p>{languagesCode.map((language, i) => <span key={i}>{language.toUpperCase()} </span>)} {languagesCode.length > 1 && <span>({languagesCode.length})</span>}</p>
+                        : <p>–</p>}
                 </li>
                 <li>
                     <h3>Code{(currenciesCode && currenciesCode.length) > 1 && "s"} devise :</h3>
                     {currenciesCode ?
-                        <p>{currenciesCode.map((currency, i) => <span key={i}>{currency} </span>)}</p> : <p>–</p>}
+                        <p>{currenciesCode.map((currency, i) => <span key={i}>{currency} </span>)} {currenciesCode.length > 1 && <span>({currenciesCode.length})</span>}</p>
+                        : <p>–</p>}
                 </li>
                 <li>
                     <h3>Pays frontalier{(country.borders && country.borders.length > 1) && "s"} :</h3>
                     {country.borders ?
-                        <p>{country.borders.map((border, i) => <span key={i}>{border} </span>)} {country.borders.length > 1 && <span>({country.borders.length})</span>}</p> : <p>–</p>}
+                        <p>{country.borders.map((border, i) => <span key={i}>{border} </span>)} {country.borders.length > 1 && <span>({country.borders.length})</span>}</p>
+                        : <p>–</p>}
                 </li>
             </ul>
         </div>
