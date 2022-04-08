@@ -54,20 +54,23 @@ const Article = ({article}) => {
                         </textarea>
                         : <p>{editContent ? editContent : article.content}</p>
                 }
-                <div className="btn-container">
-                    {isEditing ?
+                {isEditing ?
+                    <div className="btn-container">
+                        <button onClick={() => {
+                            setEditContent(article.content);
+                            setIsEditing(false);
+                        }}>Annuler</button>
                         <button onClick={() => handleEdit()}>Valider</button>
-                        : <button onClick={() => setIsEditing(true)}>Éditer</button>
-                    }
-                    <button
-                        onClick={() => {
+                    </div>
+                    : <div className="btn-container">
+                        <button onClick={() => setIsEditing(true)}>Éditer</button>
+                        <button onClick={() => {
                             if (window.confirm("Voulez-vous vraiment supprimer cet article ?")) {
                                 handleDelete();
                             }
-                        }}>
-                        Supprimer
-                    </button>
-                </div>
+                        }}>Supprimer</button>
+                    </div>
+                }
             </article>
         </li>
     );
