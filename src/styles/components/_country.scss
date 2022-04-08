@@ -1,17 +1,16 @@
 .country {
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    padding: 5px;
-    margin: 50px 5vw;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));;
+    gap: 20px;
+    padding: 20px 5vw;
 
     li {
       text-align: left;
-      margin: 10px 5px;
+    }
 
-      p {
-        margin: 5px 0 0 0;
-      }
+    p {
+      margin: 5px 0 0;
     }
   }
 }

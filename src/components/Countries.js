@@ -57,14 +57,14 @@ const Countries = () => {
                 }}>Retour à la liste</button>
             </div>}
 
-            {!selectedCountry && <ul>
+            {!selectedCountry && <ol>
                 {filteredCountries.map((country, index) =>
                     <Card key={index} country={country}
                           handler={() => setSelectedCountry(country)} />
                 )}
-            </ul>}
+            </ol>}
         </div>
     );
-};
+}
 
 export default Countries;
